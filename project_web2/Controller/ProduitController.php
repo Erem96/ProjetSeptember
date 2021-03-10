@@ -1,7 +1,7 @@
 <?php
 
-if(isset($_COOKIE['refPersonnes'])){
-    $ref = $_COOKIE['refPersonnes'];
+if(isset($_SESSION['refPersonnes'])){
+    $ref = $_SESSION['refPersonnes'];
 }
 else
 {
@@ -20,7 +20,7 @@ if((isset($_POST['FicheProduit'])))
 
 if((isset($_POST['editerProduit'])))
 {   
-    produit::editProduct($_POST['nomProduit'], $_POST['description'], $_POST['buyPrice'], $_POST['sellPrice'], 
+    produit::editProduct($_POST['nomProduit'], $_POST['description'], 
     $_POST['unit'], $_POST['PictureLink'], $_POST['RefProduit']);
     require ROOT.'View/ProduitEdite.php';
 
@@ -44,14 +44,37 @@ if((isset($_POST['SupprimerProduit'])))
     produit::deleteProduit($_POST['SupprimerProduit']);
 }
 
-if(isset($_POST['acheterArticle']))
+if(isset($_POST['acheterProduit']))
 {
-    $refChoice = $_POST['acheterArticle'];
+    $refChoice = $_POST['acheterProduit'];
     $refcommande = $_POST['Commande'];
     $quantity = $_POST['quantity'];
+    $refPersonneParam = 0;
     if($quantity != null)
     {
-        produit::acheterProduit($refChoice, $refcommande, $quantity);
+        require ROOT.'Model/CommandeModel.php';
+
+        if($refcommande === "0") //creer une nouvelle commande et une nouvelle ligne
+        {
+            commandeLine::addLine(reset(commande::addCommande($refPersonneParam)), $refChoice, $quantity);
+        }
+        else
+        {
+            $lineNumber = commandeLine::getline($refcommande, $refChoice);
+            if($lineNumber != null)
+            {
+                commandeLine::addLine($refcommande,  $refChoice, $quantity);
+            }
+            else
+            {
+                commandeLine::updateLine($refLine, $quantity);
+            }
+            
+        }
+
+
+
+    //    produit::acheterProduit($refChoice, $refcommande, $quantity);
     }
     else
     {

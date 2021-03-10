@@ -25,7 +25,7 @@ if((isset($_POST['FicheProduit'])))
             <input type="text" name="PictureLink" id="PictureLink" required value=<?php echo $pictureLink ?>>* PictureLink <br> <br>
             <input type="text" name="unit" id="unit" required value=<?php echo $Unit ?>>* Unit <br> <br>
             <input type="hidden" name="RefProduit" value=<?php echo $refProduit ?>>
-            <input type="submit" value="editerProduit" name="editerProduct"> 
+            <input type="submit" value="editerProduit" name="editerProduit"> 
             </form>
             <?php
 

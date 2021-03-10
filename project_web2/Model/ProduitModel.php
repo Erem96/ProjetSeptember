@@ -46,24 +46,20 @@ public static function addProduct(string $articleName, string $descriptionParam,
 string $illustrationUrlParam)
 {
     $bdd = new PDO('mysql:host=localhost;dbname=Projectfinal;charset=utf8', 'testuser', 'alexis123', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    $query = $bdd->prepare
-    (" insert INTO produits(nomProduit, descriptionProduit, prixAchatParUnit, prixventeParUnit, unit, illustrationUrl, dateEncodage) 
+    $query = $bdd->prepare(" insert INTO produits(nomProduit, descriptionProduit, prixAchatParUnit, prixventeParUnit, unit, illustrationUrl, dateEncodage) 
     VALUES ('$articleName', '$descriptionParam',  '$buyPrice', '$sellPrice', '$unitParam', '$illustrationUrlParam', SYSDATE());");
 
     $query->execute();
 }
 
-public static function editProduct(string $articleName, string $descriptionParam, string $buyPrice, string $sellPrice, string $unitParam,
+public static function editProduct(string $articleName, string $descriptionParam, string $unitParam,
 string $illustrationUrlParam, string $refProduit)
 {
     $bdd = new PDO('mysql:host=localhost;dbname=Projectfinal;charset=utf8', 'testuser', 'alexis123', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-    $query = $bdd->prepare
-    ("update produits 
+    $query = $bdd->prepare("update produits 
     SET nomProduit = '$articleName',
     illustrationUrl = '$illustrationUrlParam',
     descriptionProduit = '$descriptionParam',
-    prixAchatParUnit = '$buyPrice',
-    prixventeParUnit = '$sellPrice',
     unit =  '$unitParam' 
     WHERE refProduit =  $refProduit;");
 

@@ -2,7 +2,7 @@
 
 require ROOT.'Model/UserModel.php';
 
-if(isset($_COOKIE['login']))
+if(isset($_SESSION['login']))
 {
     
    setcookie('login',"", -3000,'../');
@@ -13,14 +13,16 @@ else
 {
     if(isset($_POST['login']))
     {
+        
         $login = $_POST['login'];
         $password = $_POST['password'];
         echo 'test connection';
         if(reset(compte::NumberOfCorrespondingCount($login, $password)) != "0")
         {
 
-            session_start();
+            
             $_SESSION['login'] = $login;
+
             setcookie('login',$login, 0,'../');
             setcookie('refPersonnes',0, 0,'../'); //0 pour le moment, le modifier en créant une fonction de recuperation de la reference
             echo 'connection reussie';
