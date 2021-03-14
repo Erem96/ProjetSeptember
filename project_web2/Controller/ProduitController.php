@@ -1,7 +1,7 @@
 <?php
 
-if(isset($_SESSION['refPersonnes'])){
-    $ref = $_SESSION['refPersonnes'];
+if(isset($_SESSION['reference'])){
+    $ref = $_SESSION['reference'];
 }
 else
 {
@@ -9,7 +9,9 @@ else
 }
 
 require ROOT.'Model/ProduitModel.php';
+require ROOT.'Model/CommandeModel.php';
 $ListeCompte = produit::getAll();
+$ListeCommande = commande::getAll($_SESSION['reference']);
 require ROOT.'View/listeProduit.php';
 
 if((isset($_POST['FicheProduit'])))
@@ -49,7 +51,7 @@ if(isset($_POST['acheterProduit']))
     $refChoice = $_POST['acheterProduit'];
     $refcommande = $_POST['Commande'];
     $quantity = $_POST['quantity'];
-    $refPersonneParam = 0;
+    $refPersonneParam = $_SESSION['reference'];
     if($quantity != null)
     {
         require ROOT.'Model/CommandeModel.php';

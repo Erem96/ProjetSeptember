@@ -27,12 +27,6 @@ public function __construct()
     }
 }
 
-// public function ListeCompte()
-// {
-//     require ROOT.'Views/ListeCompte.php'; /*recuperation du controler */
-
-// }
-
 }
 
 class compte {
@@ -43,10 +37,10 @@ class compte {
     public $adresseMail;
     public $statut;
 
-    public static function NumberOfCorrespondingCount($userName, $password)
+    public static function CorrespondingCount($userName, $password)
     {
         $bdd = new PDO('mysql:host=localhost;dbname=Projectfinal;charset=utf8', 'testuser', 'alexis123', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        $query = $bdd->prepare("select count(*) FROM personnes WHERE pseudo LIKE '$userName' && motDePasse LIKE '$password'");
+        $query = $bdd->prepare("select refPersonnes FROM personnes WHERE pseudo LIKE '$userName' && motDePasse LIKE '$password'");
         $query->execute();
         return $query -> fetch();
     }

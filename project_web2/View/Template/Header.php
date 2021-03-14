@@ -3,7 +3,7 @@
  if(isset($_SESSION['login'])) 
     {
        $test = ROOT;
-        echo "<div align='left'>"."User:".$_COOKIE['login']."<br></div>";
+        echo "<div align='left'>"."User:".$_SESSION['login']."(".$_SESSION['reference'].")<br></div>";
         echo '<a href="?action=deconnectionRequest">Deconnection test</a><br>';
         echo "<a href='$test'>Produits</a><br>";
         //.'article/'.'listeProduit

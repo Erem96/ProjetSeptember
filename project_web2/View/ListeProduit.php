@@ -15,7 +15,11 @@
 
               echo "<form action='./index.php?action=ListeProduit' method='post'><input type='number' name='quantity' placeholder='quantite'> quantite 
               <input type='submit' name='acheterProduit'value='$refProduit'> Acheter cet article pour la commande n° (selectionnez 0 pour une nouvelle commande) 
-            //   <SELECT name='Commande' size='1'>
+            //   <SELECT name='Commande' size='1'>";
+            foreach($ListeCommande as $commande)
+            {
+              echo "<option value=".$commande['refCommande'].">".$commande['refCommande']."</option>";   
+            }
             //   <option value=0> 0</option>";
             //   foreach($records2 as $key2 => $value2)
             //   {
@@ -29,7 +33,7 @@
               echo "<form action='./index.php?action=ListeProduit' method='post'> <input type='submit' name='FicheProduit'value='$refProduit'> Fiche produit</form>"; 
               echo '<br>';
                $imageName = $value['illustrationUrl'];  
-               echo  "<img src='view/images/$imageName'>" ;  
+               echo  "<img src='images/$imageName'>" ;  
                
                echo '<br><br>_______________________________________________<br><br>';
               

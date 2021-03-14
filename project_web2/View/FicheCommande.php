@@ -1,6 +1,6 @@
-<?php
 
-echo "<table border='1'>
+
+<table border=1>
 <tr>
 <td>Reference </td>
 <td>Quantite</td>
@@ -8,12 +8,11 @@ echo "<table border='1'>
 <td>Prix de vente</td>
 <td>Total</td>
 
-</tr>";
-
-
-echo "<br>
+</tr>
+<br>
 _________________________________________
 <br>DETAIL COMMANDE";
+<?php
 foreach($fiche as $key => $value)
 {
     
@@ -32,13 +31,13 @@ foreach($fiche as $key => $value)
     <td>$Total</td>
     </tr>";
 }
+?>
+</table>
 
-echo '</table>';
-
-echo "<br><br><form action='./index.php?action=listeCommandes' method='post'>
+<br><br>
+<form action='./index.php?action=listeCommandes' method='post'>
 <input type='submit' name='validerCommande'value='$ref'> valider commande
 </form>";
 
 
 
-?>

@@ -1,7 +1,7 @@
 <?php
 
 require ROOT.'Model/CommandeModel.php';
-$ListeCommande = commande::getAll(0);
+$ListeCommande = commande::getAll($_SESSION['reference']);
 require ROOT.'View/ListeCommande.php';
 
 if((isset($_POST['ficheCommande'])))
