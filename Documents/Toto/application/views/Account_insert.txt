@@ -1,0 +1,14 @@
+
+<html>
+<head>
+        <title><?= $titre ?></title>
+</head>
+<body>        
+            <form method="post"> <br> <br> 
+            <input type="text" name="pseudo" id="pseudo" required value=<?php echo $pseudo ?>> Pseudo <br> <br> 
+            <input type="text" name="motDePasse" id="motDePasse" required value=""> Mot de passe <br><br>
+            <input type="text" name="motDePasseConfirm" id="motDePasseConfirm"> Confirmer Mot de passe <br><br>
+            <input type="submit"> 
+            </form>
+</body>
+</html>
